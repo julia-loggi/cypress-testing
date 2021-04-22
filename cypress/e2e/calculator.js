@@ -13,13 +13,7 @@ describe('authenticated calculator', () => {
 
   it('displays the username', () => {
     cy.createUser().then(user => {
-      cy.request({
-        url: 'http://localhost:3000/login',
-        method: 'POST',
-        body: user,
-      }).then(response => {
-        window.localStorage.setItem('token', response.body.user.token)
-      })
+      cy.login(user)
       cy.visit('/')
       cy.findByTestId('username-display').should('have.text', user.username)
       cy.findByText(/logout/i).click()

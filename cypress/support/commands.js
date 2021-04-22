@@ -35,6 +35,16 @@ Cypress.Commands.add('createUser', (overrides) => {
   }).then(response => ({...response.body.user, ...user}))
 })
 
+Cypress.Commands.add('login', (user) => {
+  cy.request({
+    url: 'http://localhost:3000/login',
+    method: 'POST',
+    body: user,
+  }).then(response => {
+    window.localStorage.setItem('token', response.body.user.token)
+  })
+})
+
 Cypress.Commands.add('assertHome', () => {
   cy.url().should('eq', `${Cypress.config().baseUrl}/`)
 })
