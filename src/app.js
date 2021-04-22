@@ -18,9 +18,9 @@ function App({user, logout}) {
             <input
               onChange={handleThemeChange}
               checked={theme === 'light'}
-              type="radio"
-              name="theme"
-              value="light"
+              type='radio'
+              name='theme'
+              value='light'
             />{' '}
             light
           </label>
@@ -28,9 +28,9 @@ function App({user, logout}) {
             <input
               onChange={handleThemeChange}
               checked={theme === 'dark'}
-              type="radio"
-              name="theme"
-              value="dark"
+              type='radio'
+              name='theme'
+              value='dark'
             />{' '}
             dark
           </label>
@@ -45,23 +45,26 @@ function App({user, logout}) {
         }}
       >
         {user ? (
-          <button type="button" onClick={logout}>
-            Logout
-          </button>
+          <>
+            <div data-testid='username-display'>{user.username}</div>
+            <button type='button' onClick={logout}>
+              Logout
+            </button>
+          </>
         ) : (
           <>
-            <Link to="/register">Register</Link>
-            <Link to="/login">Login</Link>
+            <Link to='/register'>Register</Link>
+            <Link to='/login'>Login</Link>
           </>
         )}
       </div>
       <div style={{marginTop: 30, textAlign: 'center'}}>
         Calculator component{' '}
-        <a href="https://codepen.io/mjijackson/pen/xOzyGX">created</a>
+        <a href='https://codepen.io/mjijackson/pen/xOzyGX'>created</a>
         {' by '}
         <br />
-        <a href="https://twitter.com/mjackson">Michael Jackson</a> of{' '}
-        <a href="https://reacttraining.com/">React Training</a>
+        <a href='https://twitter.com/mjackson'>Michael Jackson</a> of{' '}
+        <a href='https://reacttraining.com/'>React Training</a>
       </div>
     </ThemeProvider>
   )
